@@ -41,6 +41,7 @@ var DocumentsComponent = (function () {
             moduleId: module.id,
             selector: 'documents',
             templateUrl: 'documents.component.html',
+            styleUrls: ['documents.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], DocumentsComponent);
