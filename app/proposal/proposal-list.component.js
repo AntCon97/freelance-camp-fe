@@ -12,16 +12,21 @@ var core_1 = require('@angular/core');
 var proposal_1 = require('./proposal');
 var ProposalListComponent = (function () {
     function ProposalListComponent() {
-        this.proposalOne = new proposal_1.Proposal(15, 'ABC Company', 'http://conradsportfolio.com', 'Ruby on Rails', 150, 120, 15, 'AntCon1000@gmail.com');
-        this.proposalTwo = new proposal_1.Proposal(12, 'DEF Company', 'http://conradsportfolio.com', 'Ruby on Rails', 120, 110, 17, 'AntCon1000@gmail.com');
-        this.proposalThree = new proposal_1.Proposal(102, 'GHI Company', 'http://conradsportfolio.com', 'Ruby on Rails', 100, 100, 20, 'AntCon1000@gmail.com');
-        this.proposals = [this.proposalOne, this.proposalTwo, this.proposalThree];
+        this.proposalOne = new proposal_1.Proposal(15, 'Abc Company', 'http://conradsportfolio.com', 'Ruby on Rails', 150, 120, 15, 'antcon1000@gmail.com');
+        this.proposalTwo = new proposal_1.Proposal(99, 'XYZ Company', 'http://conradsportfolio.com', 'Ruby on Rails', 150, 120, 15, 'antcon1000@gmail.com');
+        this.proposalThree = new proposal_1.Proposal(300, 'Something Company', 'http://conradsportfolio.com', 'Ruby on Rails', 150, 120, 15, 'antcon1000@gmail.com');
+        this.proposals = [
+            this.proposalOne,
+            this.proposalTwo,
+            this.proposalThree
+        ];
     }
     ProposalListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'proposal-list',
-            templateUrl: 'proposal-list.component.html'
+            templateUrl: 'proposal-list.component.html',
+            styleUrls: ['proposal-list.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], ProposalListComponent);
