@@ -11,17 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Rx_1 = require('rxjs/Rx');
-var DocumentService = (function () {
-    function DocumentService(http) {
+var ProposalService = (function () {
+    function ProposalService(http) {
         this.http = http;
-        this.documentsUrl = 'http://localhost:3002/freelance_documents.json';
+        this.proposalsUrl = 'http://localhost:3003/proposals';
     }
-    DocumentService.prototype.getDocuments = function () {
-        return this.http.get(this.documentsUrl)
+    ProposalService.prototype.getProposals = function () {
+        return this.http.get(this.proposalsUrl)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    DocumentService.prototype.handleError = function (error) {
+    ProposalService.prototype.getProposal = function (id) {
+        return this.http.get(this.proposalsUrl + "/" + id + '.json');
+    };
+    ProposalService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
         var errMsg;
         if (error instanceof http_1.Response) {
@@ -35,11 +38,11 @@ var DocumentService = (function () {
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    DocumentService = __decorate([
+    ProposalService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], DocumentService);
-    return DocumentService;
+    ], ProposalService);
+    return ProposalService;
 }());
-exports.DocumentService = DocumentService;
-//# sourceMappingURL=document.service.js.map
+exports.ProposalService = ProposalService;
+//# sourceMappingURL=proposal.service.js.map
