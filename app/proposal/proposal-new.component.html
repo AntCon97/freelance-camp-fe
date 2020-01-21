@@ -5,7 +5,7 @@
 			<h1>Create a Proposal</h1>
 
 			<div>
-				<form #proposalForm="ngForm">
+				<form (ngSubmit)="createProposal(proposal)" #proposalForm="ngForm">
 					<div class="form-group">
 						<label for="customer">Customer Name</label>
 						<input type="text"
@@ -125,11 +125,29 @@
 						>
 					</div>
 
+					<button type="submit"
+						class='btn btn-outline-primary btn-lg'
+						[disabled]="!proposalForm.form.valid"
+						[hidden]="submitted"
+					>
+						Generate Proposal
+					</button>
+
+					<div
+						[hidden]="!submitted"
+						class="alert alert-success"
+						role="alert"
+						
+					>
+						Your proposal has been generated <a class="alert-link"
+						routerLink="/proposals">View all proposals</a>
+					</div>
+
 				</form>
 			</div>
 		</div>
 
-		<div class="col-md-6">
+		<div>
 			<div>
 				<p>Hi {{ proposal.customer }},</p>
 
@@ -143,7 +161,7 @@
 				<p>Ensuring that you are fully informed is one of my top priorities, so in addition to incorporating everything that we discussed, I will also be creating a project management dashboard and sending you a project update message daily so that you can have a transparent view of the development as it takes place.</p>
 
 
-				<p>To accomplish the project and meet the requirements that we discussed, I am estimating that it will take {{ proposal.estimated_hours }} hours in development time to complete. The project should take {{ proposal.weeks_to_complete }} weeks to complete and with my hourly rate of {{ proposal.hourly_rate }}/hour, the estimated total will be {{ proposal.hourly_rate * proposal.estimated_hours }}.</p>
+				<p>To accomplish the project and meet the requirements that we discussed, I am estimating that it will take {{ proposal.estimated_hours }} hours in development time to complete. The project should take {{ proposal.weeks_to_complete }} weeks to complete and with my hourly rate of {{ proposal.hourly_rate }}/hour, the estimated total will be {{ proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0' }}.</p>
 
 
 				<p>The next step from here is to set up a meeting to finalize the project and sign contracts.</p>
